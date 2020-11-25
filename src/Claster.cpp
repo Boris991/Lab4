@@ -1,4 +1,6 @@
 #include "Claster.h"
+#include<iostream>
+using namespace std;
 Claster::Claster(int size_, int size_q)
 {
 	if ((size_ < 0)||(size_>Maxcount))throw "uncorrect_claster_size";
@@ -87,15 +89,20 @@ void Claster::model_start(int tact)
 						cur.Change_is();
 						count_free -= cur.Getcount();
 					}
+					else
+					{
+						turn.Put(cur);
+						count_free = -1;
+					}
 				}
 			}
-		} while (count_free > 0);
+		} while ((count_free > 0)&&(!(turn.IsEmpty())));
 		int count_problem = rand() % Maxcount;
 		for (int j = 0; j < count_problem; j++)
 		{
 			string name = to_string(111233233 % (rand() % 1000));
-			int time = rand() % 50 + 1;
-			int count = rand() % 3 + 1;
+			int time = rand() % 50 +  1;
+			int count = rand() % size;
 			Typeelem newproblem(name, time, count);
 			if (!turn.IsFull())
 			{
