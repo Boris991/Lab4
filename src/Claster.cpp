@@ -61,7 +61,7 @@ void Claster::model_start(int tact)
 		int count_free = 0;
 		do
 		{
-			if (cur.Get_is() == 1)       //если взятое из очереди задание еще не в работе
+			if (cur.Get_is() == 1)       //если задание еще не в работе
 			{
 				if (!(turn.IsEmpty()))
 				{
